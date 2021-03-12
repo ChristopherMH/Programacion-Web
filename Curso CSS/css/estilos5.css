@@ -1,0 +1,11 @@
+.linea{
+    display: inline-block;
+    background-color: yellow;
+    width: 100px;
+    padding-bottom: 50px;
+}
+
+.bloque{
+    background-color: greenyellow;
+    display: inline-block;
+}

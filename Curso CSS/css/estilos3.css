@@ -1,0 +1,38 @@
+h1{
+    background-color: peru;
+}
+
+h2{
+    background-color: purple;
+}
+
+a{
+    background-color: red;
+    width: 100px;
+    height: 150px;
+}
+
+span{
+    background-color: blue;
+    height: 500px;
+}
+
+div{
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.caja-1{
+    background-color: aqua;
+    padding: 10px;
+    border-style: dotted solid dashed;
+    border-right-width: 10px;
+    border-color: blue red;
+}    
+
+.caja-2{
+    background-color: blueviolet;
+    border: 2px solid black;
+}

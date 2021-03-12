@@ -1,0 +1,177 @@
+/*
+Psuedoclases
+
+    Dinámicas:
+    :link - (lniks) - link no visitado
+    :visited - (links) - link visitado
+    :active - (links) - Al momento de dar un clic
+    :hover - (links) - Al poner el mouse sobre el elemento
+    :focus - Cuando un elemento tiene el foco
+*/
+
+.enlace:link{
+    color: aqua;
+}
+
+.enlace:visited{
+    color: red;
+}
+
+.enlace:active{
+    background-color: black;
+}
+
+.boton{
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: green;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.boton:active{
+    transform: scale(.8);
+}
+
+.boton:hover{
+    color: green;
+    background-color: white;
+    border: 1px solid green;
+}
+
+.foco:focus{
+    background-color: pink;
+    color: purple
+}
+
+/*Target*/
+
+.enlaceP{
+    display: block;
+    background-color: rebeccapurple;
+    text-align: center;
+    padding: 10px 0;
+    color: white;
+}
+
+.parrafo{
+    margin: 400px 0;   
+}
+
+.parrafo:target{
+    padding: 50px 0 0;
+}
+
+/*
+ESTADO
+:enabled
+:disabled
+:checked
+:required
+:valid
+:invalid
+
+:in-range
+:out-of-range
+*/
+
+.label, .input{
+    display: block;
+}
+
+.input:enabled{
+    background-color: yellowgreen;
+}
+
+.input:disabled{
+    background-color: yellow;
+    border: none;
+}
+
+.input:checked + .label{
+    font-size: 40px;
+}
+
+.input:optional{
+    background-color: aqua;
+}
+
+.input:in-range{
+    background-color: purple;
+}
+
+.input:out-of-range{
+    background-color: blue;
+}
+
+/*
+    Pseudoclases - Estructurales
+    
+    :root
+
+    :empty - elementos vacíos
+
+    CHILD - 
+    :first-child
+    :last-child
+
+    :nth-child()
+    :nth-last-child()
+    :only-child
+
+    Valores:
+    odd - impares
+    even - pares
+    números enterios
+    ecuaciones (1n, 2n, 3n+1, n+2...)
+*/
+
+/* .p{
+    background-color: aqua;
+    padding: 10px
+}
+
+.p:empty{
+    all: unset;
+} */
+
+/* .p:first-child{
+    background-color: aqua;
+}
+
+.p:last-child{
+    background-color: palevioletred;
+}
+
+.p:nth-child(4){
+    background-color: peru;
+}
+
+.p:nth-child(n+3){
+    background-color: peru;
+}
+
+.p:nth-last-child(){
+    background-color: green;
+}
+
+.p:only-child{
+    background-color: greenyellow;
+} */
+
+/* .p:first-of-type{
+    background-color: greenyellow;
+}
+
+.p:nth-of-type(4){
+    background-color: hotpink;
+} */
+
+.p:nth-of-type(4){
+    background-color: hotpink;
+}
+
+.p:not(.p1){
+    background-color: greenyellow;
+}

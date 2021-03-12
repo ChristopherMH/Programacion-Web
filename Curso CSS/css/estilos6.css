@@ -1,0 +1,49 @@
+/*Sintaxis
+selector::pseudo-elemento{
+    PROPIEDADES: VALOR;
+}
+
+Pseudoelementos:
+SE UTILIZAN PARA DARLES ESTILOS A PARTES ESPECÍFICAS DE UN ELEMENTO.
+
+::first-letter - ELEMENTOS EN BLOQUE
+::first-line - ELEMENTOS EN BLOQUE
+
+
+*/
+
+.titulo::first-letter{
+    color: hotpink;
+    font-size: 40px;
+}
+
+.linea::first-letter{
+    color: hotpink;
+    font: 40px;
+}
+
+.linea{
+    display: inline-block;
+}
+
+.texto::selection{
+    background-color: blueviolet;
+    color: white;
+}
+
+.dinero::before{
+    content: '$'; /*obligatoria*/
+}
+
+.dinero::after{
+    content: '.00';
+}
+
+.ejemplo::after, .ejemplo::before{
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: black;/*Sin contenido no se muestra nada porque es un elemento en línea
+    */
+}

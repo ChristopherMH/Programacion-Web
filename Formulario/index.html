@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Formulario</h1>
+    <form action="index.html">
+        <h3>Texto</h3>
+        <label for="">Nombre</label>
+        <input type="text" name="nom" id="nombre" placeholder="Introduce nombre" size="50" value="Christopher" maxlength="20" autofocus required>
+        <br>
+        <h3>Radio</h3>
+        <fieldset>
+            <legend>Género</legend>
+            <input type="radio" name="genero" value="Hombre" checked> Hombre
+            <input type="radio" name="genero" value="Mujer"> Mujer
+            <input type="radio" name="genero" value="Otro"> Otro
+        </fieldset>
+        <h3>Select</h3>
+        <label for="frutas">Frutas</label>
+        <select name="frutas" id="frutas">
+            <optgroup label="Favoritas">
+                <option value="fresa">Fresa</option>
+                <option value="uva">Uva</option>
+                <option value="naranja">Naranja</option>
+            </optgroup>
+            <optgroup label="Otras">
+                <option value="manzana">Manzana</option>
+            </optgroup>
+        </select>
+
+        <h3>Textarea</h3>
+        <textarea name="mensaje" id="mensaje" cols="20" rows="5" placeholder="Escribe un mensaje..." required></textarea>
+
+        <h3>Datalist</h3>
+        <label for="">Navegadores</label>
+        <input list="buscador" required>
+        <datalist id="buscador">
+            <option value="Safari"></option>
+            <option value="Internet Explorer"></option>
+            <option value="Chrome"></option>
+        </datalist>
+
+        <h3>Password</h3>
+        <label for="contrasena">Contraseña</label>
+        <input type="password" id="contrasena" required>
+
+        <h3>Checkbox</h3>
+        <input type="checkbox" name="hola" value="valor1" checked> Hola
+        <input type="checkbox" name="adios" value="valor2" checked> Adiós
+
+        <h3>Color</h3>
+        <input type="color">
+
+        <h3>Fecha</h3>
+        <input type="date" value="1999-10-14" min="1999-01-01">
+        <input type="datetime-local">
+        <input type="week">
+        <input type="month">
+        <input type="time">
+
+        <h3>email</h3>
+        <input type="email">
+
+        <h3>URL</h3>
+        <input type="url">
+
+        <h3>Number</h3>
+        <input type="number" min="0" max="10" step="2">
+        <h3>Rango</h3>
+        <input type="rango" min="0" max="40" step="5">
+        <br></br>
+        <input type="submit" value="Enviar">
+        <h3>Buscador</h3>
+        <input type="search" name="" id="">
+        <h3>Teléfonp</h3>
+        <input type="tel" maxlength="10" pattern="">
+
+        <h3>Archivos</h3>
+        <input type="file" multiple>
+        <input type="image">
+        <button>Enviar</button>
+        <br>
+        <input type="reset" value="Limpiar">
+    </form>
+</body>
+</html>
