@@ -1,0 +1,28 @@
+body{
+    margin: 0 auto;
+    max-width: 1024;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header h1 {
+    color: #fff;
+    /* text-shadow: 1px 1px 1px purple, -1px -1px 1px purple; */
+    -webkit-text-stroke: 1px purple;
+    margin: 0;
+    font-size: 24px;
+}
+
+header nav ul li{
+    display: inline-block;
+}
+
+.header-contenido {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 25px;
+}
+
+.header-redes {
+    margin-top: 25px;
+}
