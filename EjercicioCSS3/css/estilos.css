@@ -49,6 +49,27 @@ main {
 
 aside {
     width: 25%;
+    font-size: 16px;
+}
+
+aside ul li{
+    margin-bottom: 10px;
+}
+
+aside h3, aside h4{
+    margin: 0;
+}
+
+aside div:nth-child(1){
+    margin-bottom: 40px;
+}
+
+aside div:nth-child(2){
+    margin-bottom: 60px;
+}
+
+aside div p{
+    margin: 5px 0 10px;
 }
 
 main, aside {
@@ -56,9 +77,30 @@ main, aside {
     vertical-align: top;
 }
 
+footer{
+    background-color: var(--azul);
+    display: flex;
+    color: #fff;
+}
+
+aside input[type="email"]{
+    height: 25px;
+}
+
+aside input[type="submit"]{
+    width: 60px;
+    height: 30px;
+    background-color: var(--verde);
+    color: #fff;
+}
+
 #logo {
     width: 195px;
     margin: 40px 0 0 30px;
+}
+
+#slide{
+    width: 100%;
 }
 
 #pintura {
@@ -94,10 +136,16 @@ main, aside {
     position: relative;
 }
 
+.secc2{
+    display: inline-flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
 .secc2 article {
     width: 32%;
-    display: inline-block;
-    vertical-align: top;
+    /* display: inline-block; */
+    /* vertical-align: top; */ /*se comentan estas dos propiedades para agregar lo de la parte de arriba con el flex.*/
 }
 
 .titulo-articulo {
@@ -112,4 +160,21 @@ main, aside {
 
 .secc2 img {
     width: 60px;
+}
+
+.secc2 article{
+    font-size: 16px;
+}
+
+.secc2 article a{
+    text-decoration: none; /*quitar las líneas de los enlaces*/
+}
+
+.offer {
+    font-size: 45px;
+    padding-left: 10%;
+}
+
+.telefono{
+    font-size: 34px;
 }
