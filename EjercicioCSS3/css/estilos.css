@@ -5,8 +5,21 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+:root{
+    --rosa: #ec348f;
+    --verde:#8bc50c;
+    --azul:#4365b1;
+    --gris: #a2a4a5;
+}
+
 header {
+    margin-bottom: 75px;
     position: relative;
+}
+
+header div {
+    height: 20px;
+    background-image: linear-gradient(to right, #049cec, #e8068d, #f26746, yellow, black);
 }
 
 header nav ul {
@@ -16,20 +29,87 @@ header nav ul {
 header nav ul li {
     display: inline-block;
     font-size: 26px;
-    color: #bbb;
+    color: var(--gris);
     border-bottom: 2px solid;
     margin-right: 20px;
 }
 
+header input[type="search"]{
+    width: 190px;
+    border: 1px solid black;
+    position: absolute;
+    top: 40px;
+    right: 20px;
+}
+
+main {
+    padding: 0 20px;
+    width: 69%;
+}
+
+aside {
+    width: 25%;
+}
+
+main, aside {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#logo {
+    width: 195px;
+    margin: 40px 0 0 30px;
+}
+
 #pintura {
     position: absolute;
-    top: 20px;
+    top: 60px;
     right: 0;
     z-index: -100;
 }
 
-header input[type="search"]{
+#offer {
     position: absolute;
-    top: 40px;
-    right: 20px;
+    top: -85px;
+    left: -65px;
+}
+
+.rosa{
+    color: var(--rosa);
+}
+
+.verde {
+    color: var(--verde)
+}
+
+.azul {
+    color: var(--azul)
+}
+
+.secc1 {
+    margin-bottom: 40px;
+}
+
+.secc1 article {
+    position: relative;
+}
+
+.secc2 article {
+    width: 32%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.titulo-articulo {
+    display: flex;
+    align-items: center;
+}
+
+.secc2 h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.secc2 img {
+    width: 60px;
 }
