@@ -14,6 +14,20 @@
 
         <h1> {{ titulo }} </h1>
         <br>
+        <label for="fruta">Fruta</label>
+        <p> {{ nuevaFruta }} </p>
+        <input 
+            type="text"
+            v-model="nuevaFruta"
+            class="form-control"
+            id="fruta"
+            @keyup.enter="agregarFruta"
+        >
+        <button type="submit" class="btn btn-primary" @click="agregarFruta">Agregar</button>
+
+        <hr>
+
+        <br>
         <h4>Mis frutas</h4>
         <ul class="list-group">
             <li 
@@ -40,12 +54,21 @@
                     class="mx-3"
                     disabled
                 >
+                <button type="submit" class="btn btn-primary btn-sm mx-1" v-on:click="fruta.cantidad++">+</button>
+                <button type="submit" class="btn btn-primary btn-sm" @click="fruta.cantidad--">-</button>
+                <span v-if="fruta.cantidad === 0">No se encuenta en almacen</span>
+                <span v-else>En almacen</span>
         </li>
         </ul>
+        <hr>
+
+        <h3 :class="colorCantidad">
+            Mi cantidad total de frutas es: {{ sumarFruta }}
+        </h3>
 
     </div>  
 
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
     <script>
         app.mount('#app');
     </script>
