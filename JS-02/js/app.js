@@ -87,7 +87,7 @@ function calculaEdad(nac){
 console.log(nombre +" "+apellido+", su edad es: "+calculaEdad(nacimiento));
 console.log(`${nombre} ${apellido}, su edad es: ${calculaEdad(nacimiento)}`);
 
-/*****************FUNCIONES DE FECHA*****************/
+/*****************FUNCIONES DE FLECHA*****************/
 const anios = [2000, 2005, 2010, 2020];
 
 let edad = anios.map(function(el){
@@ -107,3 +107,88 @@ let edadNNN = anios.map((el, index)=>{
     return `Edad ${index + 1}: ${edad}`;
 })
 console.log(edadNNN);
+
+const cuadrado = function(num){
+    return num * num;
+}
+console.log(cuadrado(2));
+
+const cuadrado2 = (num) =>{
+    return num * num;
+}
+console.log(cuadrado2(2));
+
+const cuadrado3 = num => num * num;
+console.log(cuadrado3(2));
+
+const frutas = [
+    {
+        nombre: "Manzana",
+        cantidad: 1
+    },
+
+    {
+        nombre: "Fresa",
+        cantidad: 12
+    },
+
+    {
+        nombre: "Mora azul",
+        cantidad: 3
+    },
+
+    {
+        nombre: "Uva",
+        cantidad: 8
+    }
+]
+
+const menores10 = frutas.filter(fruta => fruta.cantidad < 10 && fruta.nombre.startsWith("M"));
+console.log("Filter", menores10);
+
+const inv = frutas.reduce((suma, fruta) => suma + fruta.cantidad, 0);
+console.log("inv", inv);
+
+/*****************DESTRUCCIÓN DE OBJETOS*****************/
+
+let color = {
+    favorito: "si",
+    letraInicial: "c",
+    numero: 0,
+    cantidad: 0
+}
+
+let favorito = color.favorito;
+let letraInicial = color.letraInicial;
+
+
+const response = {
+    clave: 1,
+    error: false,
+    data: {
+        persona:{
+            nombre: "",
+            edad:0
+        }
+    }
+}
+
+// let clave = response.clave;
+let {clave, error} = response;
+console.log("response", response);
+console.log("clave", clave);
+
+let {clave: nuevoNombreClave, error2} = response;
+console.log("clave", nuevoNombreClave);
+
+let suma = (a, b, c, d) => a + b + c + d;
+console.log("suma", suma(1,2,3,4));
+
+let numeros = [1, 2, 3, 4];
+console.log("suma2", suma(...numeros));
+
+const alumnos = ["nombre1", "nombre2"];
+const maestros = ["nombre3", "nombre4"];
+
+const poblacion = [...alumnos, ...maestros];
+console.log(poblacion);
