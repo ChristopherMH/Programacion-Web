@@ -1,0 +1,47 @@
+/*
+Flexbox
+display: flex (Bloque)
+display: inline-flex (En línea)
+    * flex-direction
+        valores:  row -default- | row-reverse | column | column reverse
+        Modifica el eje principal y la dirección de los items.
+    
+    * flex-wrap
+        valores: no-wrap -default- | wrap | wrap-reverse
+        Controla si los elementos saltarán de línea o no.
+    _________________
+    Alineamiento
+    main axis: 
+        justify-content: flex-start (default)| center | space-between | space-around 
+        | space-evenly | flex-end |
+    cross axis: 
+        aling-items: Una sola línea
+            flex-start | center | flex-end | stretch(default) | baseline
+        
+        align-content: multilínea
+            flex-start | center | flex-end | stretch(default) | baseline
+        align-self: Se aplica al flex-item individual. 
+            Sirve para alinear un elemento en concreto en el cross axis.
+*/
+.flex-container {
+    height: 500px;
+    background-color: lightcoral;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-item {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    line-height: 50px;
+}
+
+.flex-item:nth-child(4) {
+    align-self: flex-end;
+}
