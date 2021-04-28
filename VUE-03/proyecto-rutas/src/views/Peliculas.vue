@@ -1,26 +1,27 @@
 <template>
-	<div>
-		<!-- <button @click="consumirPeliculas">Buscar películas</button> -->
-		<TituloPrincipal texto="PELÍCULAS" />
-		<div
-		v-for="p in peliculas"
-		:key="p.id">
-			{{p.title}}
-		</div>
-	</div>
+  <div class="m-4">
+     <TituloPrincipal texto="Películas"/>
+     <Tarjeta
+        v-for="p in peliculas"
+        :key="p.id"
+        :titulo="p.title"
+        :id="p.id"
+      />
+  </div>
 </template>
 
 <script>
 import TituloPrincipal from "../components/TituloPrincipal";
+import Tarjeta from "../components/Tarjeta";
+
 export default {
 	components: {
 		TituloPrincipal,
+		Tarjeta
 	},
 	data() {
 		return {
-			peliculas: [
-
-			]		
+			peliculas: []		
 		}
 	},
 	methods: {
