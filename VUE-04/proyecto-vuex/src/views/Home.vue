@@ -1,24 +1,32 @@
 <template>
   <div class="home">
-    <p>Total: {{$store.state.total}}</p>
+    <h2 :style="colorTotal"> Total: {{ total }}</h2>
     <br>
-    <button @click="accionAumentar">Aumentar</button>
+    <button class="btn btn-primary me-1" @click="accionAumentar">Aumentar</button>
+    <BotonDisminuir :cantidad="2" />
+    <hr>
+    <BotonAccion class="me-1" :estado="true"/>
+    <BotonAccion :estado="false"/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 import {mapState, mapMutations, mapActions} from 'vuex'
+import BotonDisminuir from '../components/BotonDisminuir'
+import BotonAccion from '../components/BotonAccion'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    BotonDisminuir,
+    BotonAccion
   },
   computed: {
     //Mapear el state SIEMPRE en computed.
-    ...mapState(["total"])
+    ...mapState(["total"]),
+    colorTotal(){
+      return this.total >= 100 ? {'color': 'green'} : {'color': 'red'};
+    }
   },
   methods: {
     //mapMutations siempre va aquí en methods

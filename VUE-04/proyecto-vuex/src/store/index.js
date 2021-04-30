@@ -5,13 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    total: 110,
-    suma: 0
+    total: 90,
   },
   mutations: {
     //Siempre se recibe state como parámetro
-    aumentar(state){
+    aumentar(state) {
       state.total++;
+    },
+    disminuir(state, cantidad){
+      state.total = state.total - cantidad;
     }
   },
   actions: {
@@ -19,7 +21,17 @@ export default new Vuex.Store({
     //el primer parámetro SIEMPRE va a ser un objeto del store
     accionAumentar({commit}){
       //pide como primer parámetro primero el nombre de la mutación
-      commit('aumentar')
+      commit('aumentar');
+    },
+    accionDisminuir({commit}, cantidad){
+      commit('disminuir', cantidad);
+    },
+    accionBoton({commit}, {estado, cantidad}){
+      if(estado){
+        commit('aumentar');
+      }else{
+        commit('disminuir', cantidad)
+      }
     }
   },
 })
