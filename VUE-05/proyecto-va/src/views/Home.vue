@@ -1,32 +1,40 @@
 <template>
   <div class="home">
-    <h1>Mis posts</h1>
-    <div v-for="p in posts"
-    :key="p.id">
-    <router-link :to="`/post/${p.id}`">
-      <h3>{{p.id}} - {{p.title}}</h3>
-    </router-link>
-      <hr>
+    <h1 class="mb-4">Mis posts</h1>
+    <div v-if="loading">Cargando.....</div>
+    <div v-else>
+      <div v-for="p in posts" :key="p.id">
+        <router-link class="router-link" :to="`/post/${p.id}`">
+          <h4>{{ p.id }} - {{ p.title }}</h4>
+        </router-link>
+        <hr />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import {mapState, mapActions} from 'vuex'
-
+import { mapState, mapActions } from "vuex";
 export default {
-  name: 'Home',
-  components: {
-  },
+  name: "Home",
+  components: {},
   computed: {
-    ...mapState(['posts'])
+    ...mapState(["posts", "loading"]),
   },
   methods: {
-    ...mapActions(['getPosts'])
+    ...mapActions(["getPosts"]),
   },
   created() {
-    this.getPosts()
+    this.getPosts();
   },
-}
+};
 </script>
+
+<style scoped>
+.router-link {
+  text-decoration: none;
+}
+.router-link:hover {
+  color: black;
+}
+</style>
