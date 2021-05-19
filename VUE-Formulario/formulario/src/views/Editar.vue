@@ -130,7 +130,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["obtenerTodo"]),
+    ...mapActions(["obtenerTodo"], todo),
     guardarTodo() {
       console.log(this.todo);
       if (this.todo.nombre.trim() === "") {
@@ -138,6 +138,7 @@ export default {
         return;
       }
       // Guardar datos
+      this.updateTodo(this.todo);
       this.limpiar();
       this.$router.push({ name: "Home" });
     },
