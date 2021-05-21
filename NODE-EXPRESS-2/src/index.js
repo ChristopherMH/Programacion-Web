@@ -6,6 +6,10 @@ const app = express();
 //CONFIGURACIONES
 app.set("port", process.env.PORT || 3000);
 
+//MIDDLEWARE
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 //BASE DE DATOS
 require("./config/connection");
 
