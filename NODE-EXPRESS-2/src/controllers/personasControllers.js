@@ -36,13 +36,71 @@ function crear(req, res) {
 	if (connection) {
 		console.log(req.body);
 		const persona = req.body;
+
+		if (!persona.nombre) {
+			return res
+				.status(400)
+				.send({ error: true, mensaje: "El nombre es obligatorio" });
+		}
+
+		if (persona.telefono && persona.telefono.length !== 10) {
+			return res.status(400).send({
+				error: true,
+				mensaje: "El número debe ser de diez caracteres",
+			});
+		}
+
 		let sql = "INSERT INTO persona set ?";
 
 		connection.query(sql, [persona], (err, data) => {
 			if (err) {
 				console.log(err);
 			} else {
-				res.json({ data, mensaje: "Persona creada con exito." });
+				res.json({
+					error: false,
+					data,
+					mensaje: "Persona creada con exito.",
+				});
+			}
+		});
+	}
+}
+
+function editar(req, res) {
+	if (connection) {
+		const { id } = req.params;
+		const persona = req.body;
+
+		let sql = "UPDATE persona set ? WHERE id = ?";
+		connection.query(sql, [persona, id], (err, data) => {
+			if (err) {
+				res.json(err);
+			} else {
+				let mensaje = "";
+				if (data.changedRows === 0) {
+					mensaje = "La información es la misma";
+				}
+				res.json({ error: false, data, mensaje });
+			}
+		});
+	}
+}
+
+function eliminar(req, res) {
+	if (connection) {
+		const { id } = req.params;
+		let sql = "DELETE FROM persona WHERE id = ?";
+		connection.query(sql, [id], (err, data) => {
+			if (err) {
+				res.json(err);
+			} else {
+				let mensaje = "";
+				if (data.affectedRows === 0) {
+					mensaje = "Persona no encontrada";
+				} else {
+					mensaje = "Persona eliminada con éxito";
+				}
+				res.json({ error: false, data, mensaje });
 			}
 		});
 	}
@@ -52,4 +110,6 @@ module.exports = {
 	listar,
 	obtenerPersona,
 	crear,
+	editar,
+	eliminar,
 };
