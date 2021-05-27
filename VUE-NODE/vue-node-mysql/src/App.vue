@@ -1,11 +1,11 @@
 <template>
 	<div id="app">
-		<b-navbar type="dark" variant="dark">
-			<b-navbar-brand>
-				<router-link to="/">Inicio</router-link>
+		<b-navbar type="dark" variant="dark" toggleable>
+			<b-navbar-brand tag="h1" class="mx-2" to="/">
+				Inicio
 			</b-navbar-brand>
 		</b-navbar>
-		<router-view />
+		<router-view class="container mt-3" />
 	</div>
 </template>
 
