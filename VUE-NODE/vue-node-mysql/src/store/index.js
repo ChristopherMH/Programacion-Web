@@ -19,6 +19,12 @@ export default new Vuex.Store({
 				commit("SET_PERSONAS", response.data);
 			});
 		},
+		crearPersona({ commit }, { params, onComplete, onError }) {
+			axios
+				.post("http://localhost:3000/", params)
+				.then(onComplete)
+				.catch(onError);
+		},
 	},
 	modules: {},
 });

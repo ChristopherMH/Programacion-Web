@@ -2,6 +2,7 @@
 	<div>
 		<h1>Personas</h1>
 		<b-button variant="primary" to="/agregar">Agregar</b-button>
+
 		<Table :items="personas" :fields="campos" />
 	</div>
 </template>
