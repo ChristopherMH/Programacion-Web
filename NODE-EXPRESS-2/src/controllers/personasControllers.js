@@ -26,7 +26,7 @@ function obtenerPersona(req, res) {
 				if (persona === undefined || persona.length == 0)
 					mensaje1 = "Persona no encontrada";
 
-				res.json({ data: persona, mensaje: mensaje1 });
+				res.json({ data: persona[0], mensaje: mensaje1 });
 			}
 		});
 	}
@@ -44,10 +44,12 @@ function crear(req, res) {
 		}
 
 		if (persona.telefono && persona.telefono.length !== 10) {
-			return res.status(400).send({
-				error: true,
-				mensaje: "El número debe ser de diez caracteres",
-			});
+			return res
+				.status(400)
+				.send({
+					error: true,
+					mensaje: "La longitud debe ser de 10 caracteres",
+				});
 		}
 
 		let sql = "INSERT INTO persona set ?";
@@ -72,6 +74,7 @@ function editar(req, res) {
 		const persona = req.body;
 
 		let sql = "UPDATE persona set ? WHERE id = ?";
+
 		connection.query(sql, [persona, id], (err, data) => {
 			if (err) {
 				res.json(err);
@@ -80,6 +83,7 @@ function editar(req, res) {
 				if (data.changedRows === 0) {
 					mensaje = "La información es la misma";
 				}
+
 				res.json({ error: false, data, mensaje });
 			}
 		});
@@ -98,8 +102,9 @@ function eliminar(req, res) {
 				if (data.affectedRows === 0) {
 					mensaje = "Persona no encontrada";
 				} else {
-					mensaje = "Persona eliminada con éxito";
+					mensaje = "Persona elimina con éxito";
 				}
+
 				res.json({ error: false, data, mensaje });
 			}
 		});
