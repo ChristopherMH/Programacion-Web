@@ -3,7 +3,12 @@
 		<h1>Personas</h1>
 		<b-button variant="primary" to="/agregar">Agregar</b-button>
 
-		<Table :items="personas" :fields="campos" />
+		<Table :items="personas" :fields="campos">
+			<template slot="actions" slot-scope="{ item }">
+				<b-button class="me-1" @click="onEditar(item)">Editar</b-button>
+				<b-button @click="onEliminar(item)">Eliminar</b-button>
+			</template>
+		</Table>
 	</div>
 </template>
 
@@ -34,6 +39,7 @@ export default {
 						return value || "-";
 					},
 				},
+				{ key: "actions", label: "Acciones" },
 			],
 		};
 	},
@@ -42,6 +48,18 @@ export default {
 	},
 	methods: {
 		...mapActions(["setPersonas"]),
+		onEditar(item) {
+			console.log("Editar", item.item.id);
+			this.$router.push({
+				name: "Editar",
+				params: {
+					id: item.item.id,
+				},
+			});
+		},
+		onEliminar(item) {
+			console.log("Eliminar", item.item.id);
+		},
 	},
 	created() {
 		this.setPersonas();
