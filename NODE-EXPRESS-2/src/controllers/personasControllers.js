@@ -44,12 +44,10 @@ function crear(req, res) {
 		}
 
 		if (persona.telefono && persona.telefono.length !== 10) {
-			return res
-				.status(400)
-				.send({
-					error: true,
-					mensaje: "La longitud debe ser de 10 caracteres",
-				});
+			return res.status(400).send({
+				error: true,
+				mensaje: "La longitud debe ser de 10 caracteres",
+			});
 		}
 
 		let sql = "INSERT INTO persona set ?";
@@ -82,6 +80,8 @@ function editar(req, res) {
 				let mensaje = "";
 				if (data.changedRows === 0) {
 					mensaje = "La información es la misma";
+				} else {
+					mensaje = "Persona actualizada con éxito";
 				}
 
 				res.json({ error: false, data, mensaje });
