@@ -3,7 +3,7 @@
 		<h1>Personas</h1>
 		<b-button variant="primary" to="/agregar">Agregar</b-button>
 
-		<Table :items="personas" :fields="campos">
+		<Table :items="personas" :fields="campos" :busy="loading">
 			<template slot="actions" slot-scope="{ item }">
 				<b-button class="me-1" @click="onEditar(item)">Editar</b-button>
 				<b-button @click="onEliminar(item)">Eliminar</b-button>
@@ -44,10 +44,10 @@ export default {
 		};
 	},
 	computed: {
-		...mapState(["personas"]),
+		...mapState(["personas", "loading"]),
 	},
 	methods: {
-		...mapActions(["setPersonas"]),
+		...mapActions(["setPersonas", "eliminarPersona"]),
 		onEditar(item) {
 			console.log("Editar", item.item.id);
 			this.$router.push({
@@ -59,9 +59,37 @@ export default {
 		},
 		onEliminar(item) {
 			console.log("Eliminar", item.item.id);
+			this.$bvModal
+				.msgBoxConfirm("Esta opción no se puede deshacer.", {
+					title: "Eliminar Persona",
+					size: "sm",
+					buttonSize: "sm",
+					okVariant: "danger",
+					okTitle: "Aceptar",
+					cancelTitle: "Cancelar",
+					footerClass: "p-2",
+					centered: true,
+				})
+				.then((value) => {
+					if (value) {
+						this.eliminarPersona({
+							id: item.item.id,
+							onComplete: (response) => {
+								this.$notify({
+									type: "success",
+									title: response.data.mensaje,
+								});
+								setTimeout(() => this.setPersonas(), 1000);
+							},
+						});
+					}
+				})
+				.catch((err) => {
+					// An error occurred
+				});
 		},
 	},
-	created() {
+	mounted() {
 		this.setPersonas();
 	},
 };

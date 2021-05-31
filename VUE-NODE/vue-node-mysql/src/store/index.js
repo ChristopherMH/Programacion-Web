@@ -8,6 +8,7 @@ export default new Vuex.Store({
 	state: {
 		personas: [],
 		persona: {},
+		loading: false,
 	},
 	mutations: {
 		SET_PERSONAS(state, personas) {
@@ -16,12 +17,19 @@ export default new Vuex.Store({
 		SET_PERSONA(state, persona) {
 			state.persona = persona;
 		},
+		SET_LOADING(state, payload) {
+			state.loading = payload;
+		},
 	},
 	actions: {
 		setPersonas({ commit }) {
-			axios.get("http://localhost:3000/").then((response) => {
-				commit("SET_PERSONAS", response.data);
-			});
+			commit("SET_LOADING", true);
+			axios
+				.get("http://localhost:3000/")
+				.then((response) => {
+					commit("SET_PERSONAS", response.data);
+				})
+				.finally(() => commit("SET_LOADING", false));
 		},
 		crearPersona({ commit }, { params, onComplete, onError }) {
 			axios
@@ -36,6 +44,18 @@ export default new Vuex.Store({
 					commit("SET_PERSONA", response.data.data);
 					onComplete(response);
 				})
+				.catch(onError);
+		},
+		editarPersona({ commit }, { id, params, onComplete, onError }) {
+			axios
+				.put(`http://localhost:3000/${id}`, params)
+				.then(onComplete)
+				.catch(onError);
+		},
+		eliminarPersona({ commit }, { id, onComplete, onError }) {
+			axios
+				.delete(`http://localhost:3000/${id}`)
+				.then(onComplete)
 				.catch(onError);
 		},
 	},

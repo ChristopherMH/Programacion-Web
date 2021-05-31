@@ -1,15 +1,16 @@
 <template>
 	<div>
-		<b-table striped hover :items="items" :fields="fields">
-			//bootsrap
+		<b-table stripe hover :busy="busy" :items="items" :fields="fields">
+			<template #table-busy>
+				<div class="text-center text-danger my-2">
+					<b-spinner class="align-middle"></b-spinner>
+					<strong>Loading...</strong>
+				</div>
+			</template>
+
+			// Bootstrap
 			<template #cell(actions)="data">
-				<!-- {{ data.index + 1 }} -->
-				<!-- eliminar / editar -->
-				<!-- //slot de vue -->
-				<slot name="actions" :item="data">
-					<!-- //Lo que se pinta en la columna -->
-					<!-- Está en home lo que agregamos -->
-				</slot>
+				<slot name="actions" :item="data"> </slot>
 			</template>
 		</b-table>
 	</div>
@@ -21,6 +22,7 @@ export default {
 	props: {
 		items: Array,
 		fields: Array,
+		busy: Boolean,
 	},
 };
 </script>
